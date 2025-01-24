@@ -1,0 +1,19 @@
+@AbapCatalog.sqlViewName: 'ZST7ISDAQL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Sql functions in hana'
+@Metadata.ignorePropagatedAnnotations: true
+define view zst7_i_sd_sql_functions as select from vbak
+ {
+ vbak.vbeln as Sales_Doc,
+ vbak.netwr as Net_Price,
+ round(vbak.netwr,1)   as Round_Op,
+ ceil(vbak.netwr) as Ceil_Price,
+ floor(vbak.netwr) as Floor_Price,
+ div(vbak.netwr,3) as Div_Op,
+ division(vbak.netwr,3,5) as Div_Op2,
+ mod(10,3) as Mod_Op,
+ abs(-10) as Abs_Op
+} 
+
