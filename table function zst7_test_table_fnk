@@ -1,0 +1,19 @@
+@AccessControl.authorizationCheck: #NOT_ALLOWED
+@ClientHandling.type: #CLIENT_DEPENDENT
+
+@EndUserText.label: 'test table function'
+define table function zst7_test_table_fnk
+with parameters 
+p_carrid :s_carr_id
+returns {
+  mandt : s_mandt;
+  carrid   :s_carr_id;
+  connid   :s_conn_id;
+  countryfr  : land1;
+  countryto  : land1;
+  cityfrom   : s_from_cit;
+  cityto     : s_to_city;
+  
+  
+}
+implemented by method zst7cl_test_amdp_002=>get_spfli_detailes;
