@@ -1,0 +1,16 @@
+CLASS ZST7CL_TEST_AMDP_002 DEFINITION PUBLIC FINAL CREATE PUBLIC.
+
+  PUBLIC SECTION.
+  INtERFACES: if_amdp_marker_hdb.
+  CLASS-METHODS: get_spfli_detailes for table function zst7_test_table_fnk.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS ZST7CL_TEST_AMDP_002 IMPLEMENTATION.
+meTHOD get_spfli_detailes BY DAtABASE fUNCTION FOR HDB LANGUAGE SQLSCRIPT oPTIONS reAD-ONLY using spfli.
+RETURN SELECT mandt, carrid, connid, countryfr, countryto, cityfrom, cityto from spfli where carrid = :p_carrid;
+ENDMETHOD.
+ENDCLASS.
